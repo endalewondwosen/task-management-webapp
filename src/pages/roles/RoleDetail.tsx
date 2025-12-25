@@ -77,7 +77,7 @@ export const RoleDetail = () => {
 
   const assignedPermissionIds = new Set(role.permissions?.map((p) => p.id) || []);
   const permissionsByResource = (allPermissions || []).reduce((acc, perm) => {
-    if (!perm?.resource) return acc;
+    if (!perm || !perm.resource) return acc;
     if (!acc[perm.resource]) {
       acc[perm.resource] = [];
     }
