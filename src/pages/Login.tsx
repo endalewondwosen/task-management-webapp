@@ -43,7 +43,7 @@ export const Login = () => {
     try {
       setError(null);
       setEmailNotVerified(null);
-      const response = await login(data.email, data.password, data.rememberMe || false);
+      await login(data.email, data.password, data.rememberMe || false);
       // Check if email is verified (response will be in the login response)
       // If login succeeds but email not verified, show warning
       navigate('/dashboard');

@@ -15,8 +15,8 @@ export const TaskDetail = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { data: task, isLoading, error, refetch } = useTask(id || '');
-  const { data: projectsData } = useProjects();
-  const { data: usersData } = useUsers();
+  // const { data: projectsData } = useProjects(); // Reserved for future use
+  // const { data: usersData } = useUsers(); // Reserved for future use
   const deleteTask = useDeleteTask();
   const updateTask = useUpdateTask();
   const [isUpdatingStatus, setIsUpdatingStatus] = useState(false);
@@ -91,7 +91,7 @@ export const TaskDetail = () => {
   }
 
   const statusOptions = ['TODO', 'IN_PROGRESS', 'IN_REVIEW', 'DONE', 'CANCELLED'];
-  const priorityOptions = ['LOW', 'MEDIUM', 'HIGH', 'URGENT'];
+  // const priorityOptions = ['LOW', 'MEDIUM', 'HIGH', 'URGENT']; // Reserved for future use
 
   return (
     <div className="max-w-4xl mx-auto">

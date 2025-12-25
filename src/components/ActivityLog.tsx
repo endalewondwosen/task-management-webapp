@@ -1,6 +1,6 @@
 import { useEntityActivities } from '../hooks/useActivity';
 import { formatDistanceToNow } from 'date-fns';
-import { Activity, User, Plus, Minus, Edit, Trash2, Clock } from 'lucide-react';
+import { Activity, Plus, Edit, Trash2, Clock } from 'lucide-react';
 import { Skeleton } from './Skeleton';
 import type { EntityType } from '../api/activity';
 

@@ -10,7 +10,7 @@ export const Comments = () => {
   const { data: tasksData, isLoading: tasksLoading } = useTasks({ page: 1, limit: 100 });
 
   // Get all comments from all tasks
-  const allComments: Array<{ comment: any; task: any }> = [];
+  // const allComments: Array<{ comment: any; task: any }> = []; // Reserved for future use
   
   if (tasksData?.data) {
     tasksData.data.forEach((task) => {

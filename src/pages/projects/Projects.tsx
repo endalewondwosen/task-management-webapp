@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useProjects, useDeleteProject } from '../../hooks/useProjects';
-import type { ProjectStatus } from '../../types';
+// import type { ProjectStatus } from '../../types'; // Reserved for future use
 import { Plus, Search, Edit, Trash2, Eye } from 'lucide-react';
 import { SkeletonList } from '../../components/Skeleton';
 import { ErrorDisplay } from '../../components/ErrorDisplay';

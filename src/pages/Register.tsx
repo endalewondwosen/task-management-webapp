@@ -23,7 +23,7 @@ const registerSchema = z
 type RegisterFormData = z.infer<typeof registerSchema>;
 
 export const Register = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate(); // Reserved for future use
   const [isLoading, setIsLoading] = useState(false);
   const [registrationSuccess, setRegistrationSuccess] = useState(false);
 
@@ -38,7 +38,7 @@ export const Register = () => {
   const onSubmit = async (data: RegisterFormData) => {
     try {
       setIsLoading(true);
-      const response = await api.post('/auth/register', {
+      await api.post('/auth/register', {
         name: data.name,
         email: data.email,
         password: data.password,

@@ -3,7 +3,7 @@ import { useRole, useDeleteRole, useAssignPermission, useRemovePermission } from
 import { usePermissions } from '../../hooks/usePermissions';
 import { useAuth } from '../../contexts/AuthContext';
 import { ArrowLeft, Edit, Trash2, Shield, Check, X } from 'lucide-react';
-import { useState } from 'react';
+// import { useState } from 'react'; // Reserved for future use
 
 export const RoleDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -164,8 +164,8 @@ export const RoleDetail = () => {
                     {resource}
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                    {perms.map((permission) => {
-                      if (!permission?.id) return null;
+                    {(perms || []).map((permission) => {
+                      if (!permission || !permission.id) return null;
                       const isAssigned = assignedPermissionIds.has(permission.id);
 
                       return (

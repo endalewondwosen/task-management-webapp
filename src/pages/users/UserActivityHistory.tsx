@@ -1,12 +1,12 @@
 import { useMyActivityHistory } from '../../hooks/useActivity';
 import { formatDistanceToNow } from 'date-fns';
-import { Activity, Plus, Minus, Edit, Trash2, Clock, Filter, RefreshCw } from 'lucide-react';
+import { Activity, Plus, Edit, Trash2, Clock, Filter, RefreshCw } from 'lucide-react';
 import { Skeleton } from '../../components/Skeleton';
 import { useState } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 
 export const UserActivityHistory = () => {
-  const [limit, setLimit] = useState(50);
+  const [limit] = useState(50);
   const [offset, setOffset] = useState(0);
   const [actionFilter, setActionFilter] = useState<string>('all');
   const [entityTypeFilter, setEntityTypeFilter] = useState<string>('all');

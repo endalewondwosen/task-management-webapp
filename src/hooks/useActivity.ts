@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import {
   activityApi,
-  type Activity,
   type ActivityFilters,
   type ActivityResponse,
   type EntityType,

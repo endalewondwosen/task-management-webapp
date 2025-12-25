@@ -15,7 +15,7 @@ const forgotPasswordSchema = z.object({
 type ForgotPasswordFormData = z.infer<typeof forgotPasswordSchema>;
 
 export const ForgotPassword = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate(); // Reserved for future use
   const [isLoading, setIsLoading] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
 

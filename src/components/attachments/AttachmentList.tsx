@@ -34,7 +34,7 @@ const formatFileSize = (bytes: number): string => {
   return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
 };
 
-export const AttachmentList = ({ attachments, entityType, canDelete = true }: AttachmentListProps) => {
+export const AttachmentList = ({ attachments, canDelete = true }: AttachmentListProps) => {
   const [viewingAttachment, setViewingAttachment] = useState<Attachment | null>(null);
   const deleteAttachment = useDeleteAttachment();
   const downloadAttachment = useDownloadAttachment();

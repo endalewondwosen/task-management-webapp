@@ -3,7 +3,7 @@ import { useProject, useDeleteProject, useUpdateProject } from '../../hooks/useP
 import { ActivityLog } from '../../components/ActivityLog';
 import { FileUpload, AttachmentList } from '../../components/attachments';
 import { useProjectAttachments, useUploadProjectAttachment } from '../../hooks/useAttachments';
-import { ArrowLeft, Edit, Trash2, Calendar, User, FolderKanban, Activity, Paperclip } from 'lucide-react';
+import { ArrowLeft, Edit, Trash2, Calendar, User, Activity, Paperclip } from 'lucide-react';
 import { useState } from 'react';
 
 export const ProjectDetail = () => {

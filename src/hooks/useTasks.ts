@@ -1,4 +1,4 @@
-import { useMutation, useQuery, useQueryClient, useQueryErrorResetBoundary } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 import { tasksApi, type TaskQueryParams } from '../api/tasks';
 import type { CreateTaskInput, UpdateTaskInput } from '../types';

@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useCreateProject, useUpdateProject, useProject } from '../hooks/useProjects';
-import type { CreateProjectInput, UpdateProjectInput, ProjectStatus } from '../types';
+import type { CreateProjectInput, UpdateProjectInput } from '../types';
 
 const projectSchema = z.object({
   name: z.string().min(3, 'Name must be at least 3 characters').max(100, 'Name must be less than 100 characters'),

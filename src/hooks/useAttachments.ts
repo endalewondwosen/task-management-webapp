@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
-import { attachmentsApi, type Attachment } from '../api/attachments';
+import { attachmentsApi } from '../api/attachments';
 
 const ATTACHMENTS_QUERY_KEY = 'attachments';
 

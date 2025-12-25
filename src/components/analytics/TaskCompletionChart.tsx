@@ -1,5 +1,5 @@
 import { useTaskStats } from '../../hooks/useAnalytics';
-import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { Skeleton } from '../Skeleton';
 
 const STATUS_COLORS = {
@@ -60,7 +60,7 @@ export const TaskCompletionChart = ({ userId }: { userId?: string }) => {
                 cx="50%"
                 cy="50%"
                 labelLine={false}
-                label={({ name, value, percent }) => `${name}: ${value} (${(percent * 100).toFixed(0)}%)`}
+                label={({ name, value, percent }) => `${name}: ${value} (${percent ? (percent * 100).toFixed(0) : 0}%)`}
                 outerRadius={80}
                 fill="#8884d8"
                 dataKey="value"
