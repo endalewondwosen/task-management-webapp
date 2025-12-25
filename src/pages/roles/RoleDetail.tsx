@@ -81,7 +81,10 @@ export const RoleDetail = () => {
     if (!acc[perm.resource]) {
       acc[perm.resource] = [];
     }
-    acc[perm.resource].push(perm);
+    const resourceArray = acc[perm.resource];
+    if (resourceArray) {
+      resourceArray.push(perm);
+    }
     return acc;
   }, {} as Record<string, typeof allPermissions>);
 

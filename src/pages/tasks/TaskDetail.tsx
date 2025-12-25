@@ -1,7 +1,5 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useTask, useDeleteTask, useUpdateTask } from '../../hooks/useTasks';
-import { useProjects } from '../../hooks/useProjects';
-import { useUsers } from '../../hooks/useUsers';
 import { CommentList, CommentForm } from '../../components/comments';
 import { ActivityLog } from '../../components/ActivityLog';
 import { ErrorDisplay } from '../../components/ErrorDisplay';
