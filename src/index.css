@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+/* React Calendar Dark Mode Styles */
+.dark .react-calendar {
+  background-color: #1f2937;
+  color: #f3f4f6;
+}
+
+.dark .react-calendar__navigation button {
+  color: #f3f4f6;
+}
+
+.dark .react-calendar__navigation button:enabled:hover,
+.dark .react-calendar__navigation button:enabled:focus {
+  background-color: #374151;
+}
+
+.dark .react-calendar__month-view__weekdays {
+  color: #9ca3af;
+}
+
+.dark .react-calendar__tile {
+  color: #f3f4f6;
+}
+
+.dark .react-calendar__tile:enabled:hover,
+.dark .react-calendar__tile:enabled:focus {
+  background-color: #374151;
+}
+
+.dark .react-calendar__tile--now {
+  background-color: #1e40af;
+  color: #f3f4f6;
+}
+
+.dark .react-calendar__tile--active {
+  background-color: #3b82f6;
+  color: white;
+}
