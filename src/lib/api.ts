@@ -1,18 +1,33 @@
 import axios, { AxiosError, type AxiosRequestConfig } from 'axios';
 
-// Auto-detect API URL based on current hostname
-// If accessing from network IP, use that IP for API
+// Get API URL from environment variable or fallback to local development
 const getApiUrl = () => {
   const envUrl = import.meta.env.VITE_API_URL;
-  if (envUrl) return envUrl;
   
-  // If accessing via IP address, use IP for API
-  if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-    return `http://${window.location.hostname}:4000/api`;
+  // Always use VITE_API_URL if set (required for production)
+  if (envUrl) {
+    return envUrl;
   }
   
-  // Default to localhost
-  return 'http://localhost:4000/api';
+  // Only use hostname-based detection for local development
+  // Check if we're in development mode (localhost or 127.0.0.1)
+  const isLocalDev = 
+    window.location.hostname === 'localhost' || 
+    window.location.hostname === '127.0.0.1' ||
+    window.location.hostname.startsWith('192.168.');
+  
+  if (isLocalDev) {
+    // For local network IP addresses, use that IP for API
+    if (window.location.hostname.startsWith('192.168.')) {
+      return `http://${window.location.hostname}:4000/api`;
+    }
+    // Default to localhost for local development
+    return 'http://localhost:4000/api';
+  }
+  
+  // For production (Vercel), VITE_API_URL must be set
+  console.error('VITE_API_URL is not set. Please configure it in Vercel environment variables.');
+  throw new Error('API URL is not configured. Please set VITE_API_URL environment variable.');
 };
 
 const API_URL = getApiUrl();
