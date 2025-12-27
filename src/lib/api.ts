@@ -69,8 +69,12 @@ api.interceptors.response.use(
 
     // If error is 401 and we haven't tried to refresh yet
     if (error.response?.status === 401 && !originalRequest._retry) {
-      // Don't retry login/refresh requests
-      if (originalRequest.url?.includes('/auth/login') || originalRequest.url?.includes('/auth/refresh')) {
+      // Don't retry login/refresh/logout requests
+      if (
+        originalRequest.url?.includes('/auth/login') || 
+        originalRequest.url?.includes('/auth/refresh') ||
+        originalRequest.url?.includes('/auth/logout')
+      ) {
         const isOnLoginPage = window.location.pathname === '/login';
         if (!isOnLoginPage) {
           localStorage.removeItem('token');

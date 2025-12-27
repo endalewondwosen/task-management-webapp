@@ -67,8 +67,8 @@ export const authApi = {
     try {
       await api.post('/auth/logout', {}, { withCredentials: true });
     } catch (error) {
-      // Continue even if logout request fails
-      console.error('Logout error:', error);
+      // Continue even if logout request fails - user is logging out anyway
+      // Silently handle errors to avoid showing refresh URL messages
     } finally {
       localStorage.removeItem('token');
     }

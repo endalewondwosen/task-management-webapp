@@ -32,10 +32,19 @@ export const useLogout = () => {
   const queryClient = useQueryClient();
 
   return async () => {
-    await authApi.logout();
-    queryClient.clear();
-    toast.success('Logged out successfully');
-    window.location.href = '/login';
+    try {
+      await authApi.logout();
+    } catch (error) {
+      // Continue with logout even if API call fails
+      console.error('Logout error:', error);
+    } finally {
+      // Clear all cached data
+      queryClient.clear();
+      // Remove token from localStorage
+      localStorage.removeItem('token');
+      // Use replace instead of href to avoid showing redirect in history
+      window.location.replace('/login');
+    }
   };
 };
 
