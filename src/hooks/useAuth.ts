@@ -36,14 +36,14 @@ export const useLogout = () => {
       await authApi.logout();
     } catch (error) {
       // Continue with logout even if API call fails
-      console.error('Logout error:', error);
+      // Silently handle errors to avoid showing refresh URL messages
     } finally {
       // Clear all cached data
       queryClient.clear();
       // Remove token from localStorage
       localStorage.removeItem('token');
-      // Use replace instead of href to avoid showing redirect in history
-      window.location.replace('/login');
+      // Note: Navigation is handled by AuthContext using React Router
+      // This prevents full page refresh and provides graceful client-side navigation
     }
   };
 };

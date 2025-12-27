@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import type { ReactNode } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useCurrentUser, useLogin, useLogout } from '../hooks/useAuth';
 import type { User } from '../types';
 import { authApi } from '../api/auth';
@@ -15,6 +16,7 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
+  const navigate = useNavigate();
   const [user, setUser] = useState<User | null>(null);
   const { data: currentUser, isLoading: isLoadingUser } = useCurrentUser();
   const loginMutation = useLogin();
@@ -37,6 +39,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const logout = async () => {
     await logoutFn();
     setUser(null);
+    // Use React Router navigate for graceful client-side navigation (no page refresh)
+    navigate('/login', { replace: true });
   };
 
   const value: AuthContextType = {
