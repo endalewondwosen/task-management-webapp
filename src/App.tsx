@@ -78,33 +78,33 @@ function App() {
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider>
-          <AuthProvider>
-            <ConfirmProvider>
-            <Toaster
-              position="top-right"
-              toastOptions={{
-                duration: 4000,
-                style: {
-                  background: '#363636',
-                  color: '#fff',
-                },
-                success: {
-                  duration: 3000,
-                  iconTheme: {
-                    primary: '#10b981',
-                    secondary: '#fff',
-                  },
-                },
-                error: {
+          <BrowserRouter>
+            <AuthProvider>
+              <ConfirmProvider>
+              <Toaster
+                position="top-right"
+                toastOptions={{
                   duration: 4000,
-                  iconTheme: {
-                    primary: '#ef4444',
-                    secondary: '#fff',
+                  style: {
+                    background: '#363636',
+                    color: '#fff',
                   },
-                },
-              }}
-            />
-            <BrowserRouter>
+                  success: {
+                    duration: 3000,
+                    iconTheme: {
+                      primary: '#10b981',
+                      secondary: '#fff',
+                    },
+                  },
+                  error: {
+                    duration: 4000,
+                    iconTheme: {
+                      primary: '#ef4444',
+                      secondary: '#fff',
+                    },
+                  },
+                }}
+              />
           <Routes>
             {/* Public routes */}
             <Route path="/login" element={<Login />} />
@@ -377,9 +377,9 @@ function App() {
             {/* Catch all - redirect to dashboard */}
             <Route path="*" element={<Navigate to="/dashboard" replace />} />
           </Routes>
-        </BrowserRouter>
-        </ConfirmProvider>
-        </AuthProvider>
+              </ConfirmProvider>
+            </AuthProvider>
+          </BrowserRouter>
       </ThemeProvider>
     </QueryClientProvider>
     </ErrorBoundary>
