@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useAuth } from '../contexts/AuthContext';
-import { LogIn, Mail, AlertCircle } from 'lucide-react';
+import { LogIn, Mail, AlertCircle, Info, User, Lock } from 'lucide-react';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { api } from '../lib/api';
 import { toast } from 'react-hot-toast';
@@ -34,6 +34,7 @@ export const Login = () => {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
@@ -90,8 +91,36 @@ export const Login = () => {
             Task Management System
           </p>
         </div>
-
         <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)}>
+          <div className="mb-6 bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800 rounded-lg p-4 transition-colors">
+            <div className="flex gap-2 items-center text-blue-800 dark:text-blue-200 mb-3">
+               <Info size={18} />
+               <p className="font-semibold text-sm">Quick Login (Portfolio Demo):</p>
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              <button
+                type="button"
+                onClick={() => {
+                   setValue('email', 'user@example.com');
+                   setValue('password', 'password123');
+                }}
+                className="flex items-center justify-center gap-2 px-3 py-2 bg-white dark:bg-gray-800 border border-blue-200 dark:border-blue-700 rounded shadow-sm text-sm font-medium text-blue-700 dark:text-blue-300 hover:bg-blue-50 dark:hover:bg-blue-900/50 transition-colors"
+              >
+                 <User size={16} /> Demo User
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                   setValue('email', 'admin@example.com');
+                   setValue('password', 'password123');
+                }}
+                className="flex items-center justify-center gap-2 px-3 py-2 bg-white dark:bg-gray-800 border border-blue-200 dark:border-blue-700 rounded shadow-sm text-sm font-medium text-blue-700 dark:text-blue-300 hover:bg-blue-50 dark:hover:bg-blue-900/50 transition-colors"
+              >
+                <Lock size={16} /> Admin User
+              </button>
+            </div>
+          </div>
+
           {error && (
             <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 px-4 py-3 rounded">
               {error}
@@ -194,13 +223,6 @@ export const Login = () => {
               Create an account
             </Link>
           </div>
-
-          {/* <div className="text-center text-sm text-gray-600 dark:text-gray-400">
-            <p>Default credentials:</p>
-            <p className="font-mono text-xs mt-1">
-              admin@example.com / password123
-            </p>
-          </div> */}
         </form>
       </div>
     </div>
